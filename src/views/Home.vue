@@ -10,7 +10,9 @@
                     Are you looking for a quality and stylish watch? You are in the right place! Our website offers you a wide variety of watches from the biggest brands at unbeatable prices. With our attentive and helpful customer service, you can be sure that your watch will be delivered on time and in perfect condition. So, what are you waiting for? Find your perfect watch today on our website and start enjoying your new look!
                 </p>
 
-                <button class="btn">BUY NOW</button>
+                <router-link to="/watchs">
+                    <button class="btn">BUY NOW</button>
+                </router-link>
             </div>
         </div>
     </div>

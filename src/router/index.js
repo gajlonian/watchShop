@@ -21,7 +21,7 @@ const routes = [
         name: "GiftFinder",
         path: "/gift_finder",
         component: () => import ("../views/GiftFinder.vue")
-    },
+    }
 ]
 
 const router = createRouter({
