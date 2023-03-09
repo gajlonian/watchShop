@@ -1,33 +1,33 @@
-import { createStore } from 'vuex'
-import StudentDB from "../store/webStorage.js"
+import Vuex from 'vuex'
 
-const studentDb = new StudentDB("ArrayStorage")
-
-const state = {
-    forms : studentDb.get()
-}
-
-const mutations = {
-    ADD_STUDENT: (state, name) => {
-        state.forms.push(name)
-        studentDb.set(name)
+export default new Vuex.Store({
+    state: {
+        data: [],
+        cart: []
     },
-    REMOVE_STUDENT : (state, name) => {
-        let index = state.forms.indexOf(name)
-        state.forms.splice(index, 1)
-        studentDb.remove(name)
+    mutations: {
+        SET_DATA(state, data) {
+            state.data = data
+        },
+        ADD_TO_CART(state, product) {
+            state.cart.push(product)
+            console.log(state.cart)
+        }
+    },
+    actions: {
+        fetchData({ commit }) {
+            fetch('products.json')
+                .then(res => res.json())
+                .then(data => {
+                    commit('SET_DATA', data)
+                })
+        },
+        addToCart({ commit }, product) {
+            commit('ADD_TO_CART', product)
+        }
+    },
+    getters: {
+        getData: state => state.data,
+        getCart: state => state.cart
     }
-}
-
-/*const getters = {
-    myForm : state => state.forms
-}
-*/
-const store = createStore({
-    state: state,
-    mutations: mutations,
-    //getters: getters,
-    strict: true
 })
-
-export default store

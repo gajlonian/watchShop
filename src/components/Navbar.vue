@@ -1,3 +1,5 @@
+import { mapState } from 'vuex';
+import import { mapState from 'vuex';
 <template>
     <nav class="navbar navbar-expand-md navbar-light container">
         <div class="container">
@@ -32,7 +34,12 @@
                         <i href="#" class="fa fa-shopping-cart" style="font-size:25px; color:rgba(0,0,0, .5)" onmouseover="this.style.color='#000000'" onmouseout="this.style.color='rgba(0,0,0, .5)'"></i>
                     </a>
                     <div class="carts mt-1" :class="{ active: isActive }">
-                        
+                            <ul class="list-group px-2" v-for="product in cart" :key="product.id">
+                                <li class="list-group-item m-0 d-flex justify-content-between">
+                                    <span class="d-block"><img :src="product.thumbnail" alt=""></span>
+                                    <h4 class="d-block my-auto">:{{ product.price }}</h4>
+                                </li> <hr>
+                            </ul>
                     </div>
                 </div>
             </div>
@@ -41,7 +48,7 @@
 </template>
 
 <script>
-
+import { mapGetters } from 'vuex';
 export default {
     name: "Navbar",
     data () {
@@ -57,6 +64,11 @@ export default {
             } else {
                 return this.isActive = false
             }
+        }
+    },
+    computed : {
+        cart() {
+            return this.$store.state.cart
         }
     }
 };
@@ -74,17 +86,27 @@ export default {
     .carts {
         width: 200px;
         height: 0;
-        background-color: #474554;
-        opacity: .9;
+        background-color: rgb(55, 136, 138, .8);
         position: absolute;
         right: 13px;
         border-radius: 5px;
         z-index: 1000;
         overflow: hidden;
         transition: height 400ms ease;
+        padding: 0;
     }
     .active {
-        display: block;
-        height: 450px;
+        height: 400px;
+    }
+
+    img {
+        width: 70px;
+        height: 55px;
+        border-radius: 6px;
+    }
+
+    .list-group-item {
+        background-color: inherit;
+        border: none;
     }
 </style>

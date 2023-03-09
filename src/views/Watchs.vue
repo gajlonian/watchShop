@@ -8,7 +8,7 @@
             <h5 class="card-title">{{ product.title }}</h5>
             <p class="card-text">{{ product.description }}</p>
             <p class="card-text">Prices: <span>50 $</span></p>
-            <button class="btn btn-outline-success">ADD TO CART</button>
+            <button class="btn btn-outline-success" @click="addToCart(product)">ADD TO CART</button>
           </div>
         </div>
       </div>
@@ -17,27 +17,34 @@
 </template>
 
 <script >
-    export default {   
-        name: "Watchs",
+  import { mapGetters, mapActions } from 'vuex';
+    export default { 
+      data () {
+        return {
+          products: []
+        }
+      },
+
+      computed: {
+        ...mapGetters(["getData"]),
         data () {
           return {
-            products: []
+            products : [],
           }
         },
-        created () {
-          async function getProducts () {
-            const res = await fetch('products.json') 
-            if(res.ok) {
-              return res.json()
-            }
-            throw new Error("404 NOT FOUND")
-          }
-          getProducts().then((json) => {this.products = json})
-          /*fetch('products.json') 
-            .then((res )=> res.json())
-            .then((json) => {this.products = json})*/
+      },
+      
+      created() {
+        this.$store.dispatch('fetchData')
+          .then(() => {
+            this.products = this.getData
+          })
+      },
+      methods : {
+        addToCart(product) {
+          this.$store.dispatch('addToCart', product);
         }
-        
+      }
     }
 </script>
 
