@@ -1,5 +1,13 @@
 import Vuex from 'vuex'
 
+async function getProducts () {
+    const res = await fetch('products.json')
+    if(res.ok) {
+        return res.json()
+    }
+    throw new Error('404 NOT FOUND')
+}
+
 export default new Vuex.Store({
     state: {
         data: [],
@@ -15,12 +23,14 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        fetchData({ commit }) {
-            fetch('products.json')
-                .then(res => res.json())
-                .then(data => {
-                    commit('SET_DATA', data)
-                })
+        async fetchData({ commit }) {
+            try {
+                const data = await getProducts()
+                commit("SET_DATA", data)
+            } catch (error) {
+                console.error(error)
+            }
+
         },
         addToCart({ commit }, product) {
             commit('ADD_TO_CART', product)

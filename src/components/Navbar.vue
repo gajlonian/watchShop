@@ -1,5 +1,5 @@
 import { mapState } from 'vuex';
-import import { mapState from 'vuex';
+
 <template>
     <nav class="navbar navbar-expand-md navbar-light container">
         <div class="container">
@@ -48,7 +48,7 @@ import import { mapState from 'vuex';
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+
 export default {
     name: "Navbar",
     data () {
@@ -92,7 +92,7 @@ export default {
         border-radius: 5px;
         z-index: 1000;
         overflow: hidden;
-        transition: height 400ms ease;
+        transition: height 500ms ease;
         padding: 0;
     }
     .active {
@@ -100,9 +100,9 @@ export default {
     }
 
     img {
-        width: 70px;
-        height: 55px;
-        border-radius: 6px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
     }
 
     .list-group-item {

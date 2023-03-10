@@ -1,9 +1,6 @@
 <template>
     <div>
-        <div class="container main">
-            <div>
-                <img class="img__home" src="../assets/img/smartwatch-screen-digital-device.jpg" alt="close-up-man-wearing-smart-watch-against-white-background" />
-            </div>
+        <div class="container main d-flex">
             <div class="contents my-auto">
                 <h1>ShopE</h1>
                 <p>
@@ -13,6 +10,9 @@
                 <router-link to="/watchs">
                     <button class="btn">BUY NOW</button>
                 </router-link>
+            </div>
+            <div>
+                <img class="img__home" src="../assets/img/smartwatch-screen-digital-device.jpg" alt="close-up-man-wearing-smart-watch-against-white-background" />
             </div>
         </div>
     </div>
@@ -25,17 +25,14 @@ export default {
 </script>
 
 <style scoped>
-.main {
+/*.main {
     display: flex;
     flex-direction: row-reverse;
     padding-bottom: 60px;
     position: sticky;
-}
+}*/
 .img__home {
     width: 500px;
-    /*height: 550px;*/
-    position: relative;
-    left: 65px;
 }
 
 .contents {
