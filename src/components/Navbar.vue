@@ -37,7 +37,12 @@ import { mapState } from 'vuex';
                             <ul class="list-group px-2" v-for="product in cart" :key="product.id">
                                 <li class="list-group-item m-0 d-flex justify-content-between">
                                     <span class="d-block"><img :src="product.thumbnail" alt=""></span>
-                                    <h4 class="d-block my-auto">:{{ product.price }}</h4>
+                                    <div class="my-auto">
+                                        <h6 class="d-inline mx-2">: {{ product.price }}</h6>
+                                        <span @click="removeProduct(product)">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </div>
                                 </li> <hr>
                             </ul>
                     </div>
@@ -48,6 +53,7 @@ import { mapState } from 'vuex';
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 
 export default {
     name: "Navbar",
@@ -64,7 +70,8 @@ export default {
             } else {
                 return this.isActive = false
             }
-        }
+        },
+        ...mapActions(['removeProduct'])
     },
     computed : {
         cart() {
@@ -100,8 +107,8 @@ export default {
     }
 
     img {
-        width: 60px;
-        height: 60px;
+        width: 55px;
+        height: 55px;
         border-radius: 50px;
     }
 
