@@ -21,7 +21,13 @@ export default new Vuex.Store({
 
         // add product to shopping cart
         ADD_TO_CART(state, product) {
-            state.cart.push(product);
+            //check if product already exists in cart
+            const index = state.cart.findIndex((p) => p.id === product.id)
+            if(index !== -1) {
+                state.cart[index].quantity++
+            } else {
+                state.cart.push(product);
+            }
         },
 
         // remove product to shopping cart
@@ -53,5 +59,19 @@ export default new Vuex.Store({
     getters: {
         getData: (state) => state.data,
         getCart: (state) => state.cart,
+        getTotalQuantity: (state) => {
+            let totalQuantity = 0
+            state.cart.forEach((product) => {
+                totalQuantity += product.quantity
+            })
+            return totalQuantity
+        },
+        getTotalPrice: (state) => {
+            let totalPrice = 0
+            state.cart.forEach((product) => {
+                totalPrice += product.price * product.quantity
+            })
+            return totalPrice
+        },
     },
 });

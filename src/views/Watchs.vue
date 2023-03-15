@@ -9,9 +9,9 @@
                         <h6 class="card-title">{{ product.title }}</h6>
                         <p class="card-text">{{ product.description }}</p>
                         <p class="card-text">
-                            Prices: <span>{{ product.price }}</span>
+                            Prices: <span>{{ product.price }} $</span>
                         </p>
-                        <button class="btn btn-outline-success" @click="addToCart(product)">ADD TO CART</button>
+                        <button class="btn btn-outline-success" @click.prevent="addToCart(product)">ADD TO CART</button>
                     </div>
                 </div>
             </div>

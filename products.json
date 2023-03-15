@@ -5,7 +5,8 @@
         "thumbnail": "./src/assets/img/img_shop/thumbnails/1060547_OLVD9J0(1).jpeg",
         "title": "Smartwatch Mockup 001",
         "description": "accusamus beatae ad facilis cum similique",
-        "price": "50 $"
+        "price": 50,
+        "quantity": 1
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "thumbnail":"./src/assets/img/img_shop/thumbnails/1060548_OLVD9N0(1).jpeg",
         "title": "Smartwatch Mockup 002",
         "description": "officia porro iure quia iusto qui ipsa ut modi",
-        "price": "65 $"
+        "price": 65,
+        "quantity": 1
     },
     {
         "id": 3,
@@ -21,7 +23,8 @@
         "thumbnail":"./src/assets/img/img_shop/thumbnails/1124287_OPTY5F0 (1).jpg",
         "title": "Smartwatch Mockup 003",
         "description": "reprehenderit est deserunt velit ipsam",
-        "price": "80 $"
+        "price": 80,
+        "quantity": 1
     }
 
 ]
