@@ -19,15 +19,17 @@
                 </li>
                 <div>
                     <p class="px-3 lh-base article__quantity">
-                        Quantity : <span>{{ product.quantity }}</span><br>
+                        Quantity : <span>{{ product.quantity }}</span
+                        ><br />
                         <span class="bg-dark qbtn" @click="removeQuantity(product)">
                             <i class="fas fa-minus text-white"></i>
-                        </span> <span class="bg-dark qbtn" @click="addQuantity(product)">
+                        </span> <span> </span>
+                        <span class="bg-dark qbtn" @click="addQuantity(product)">
                             <i class="fas fa-plus text-white"></i>
                         </span>
                     </p>
                 </div>
-                <hr class="my-0 py-0"/>
+                <hr class="my-0 py-0" />
             </ul>
             <footer class="px-3 pt-2">
                 <p class="mb-0 article__total">Total article : {{ getTotalQuantity }}</p>
@@ -66,31 +68,30 @@ export default {
 
         //remove a quantity from the product
         removeQuantity(product) {
-            if(product.quantity > 1) {
-                product.quantity--
+            if (product.quantity > 1) {
+                product.quantity--;
             } else {
-                this.removeProduct(product)
+                this.removeProduct(product);
             }
         },
 
         //add a quantity of the product
         addQuantity(product) {
-            product.quantity++
-        }
+            product.quantity++;
+        },
     },
     computed: {
         //cart items
         cart() {
             return this.$store.state.cart;
         },
-        
+
         // displays the quantity of product
         ...mapGetters(["getTotalQuantity"]),
 
         // displays the sum price of the product
         ...mapGetters(["getTotalPrice"]),
     },
-    
 };
 </script>
 
@@ -155,7 +156,6 @@ img {
 .qbtn {
     padding: 6px;
     border-radius: 50%;
-    font-size: .6rem;
+    font-size: 0.6rem;
 }
-
 </style>

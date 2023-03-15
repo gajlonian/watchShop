@@ -1,5 +1,6 @@
 import Vuex from "vuex";
 
+// Recuperer les données dans le fichier products.json
 async function getProducts() {
     const res = await fetch("products.json");
     if (res.ok) {
@@ -39,6 +40,7 @@ export default new Vuex.Store({
         },
     },
     actions: {
+        // Ajout des données recuperer dans le data principale
         async fetchData({ commit }) {
             try {
                 const data = await getProducts();
@@ -48,17 +50,24 @@ export default new Vuex.Store({
             }
         },
 
+        // Ajouter un produit dans le panier
         addToCart({ commit }, product) {
             commit("ADD_TO_CART", product);
         },
 
+        // Effacer un produit du panier
         removeProduct({ commit }, product) {
             commit("REMOVE_PRODUCT", product);
         },
     },
     getters: {
+        //getter le data principale
         getData: (state) => state.data,
+
+        //getter le panier
         getCart: (state) => state.cart,
+
+        //getter la total des quantités des produits
         getTotalQuantity: (state) => {
             let totalQuantity = 0
             state.cart.forEach((product) => {
@@ -66,6 +75,8 @@ export default new Vuex.Store({
             })
             return totalQuantity
         },
+
+        //getter le total du prix des produits
         getTotalPrice: (state) => {
             let totalPrice = 0
             state.cart.forEach((product) => {

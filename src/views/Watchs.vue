@@ -23,16 +23,19 @@
 import { mapGetters } from "vuex";
 export default {
     computed: {
+        // getter le data
         ...mapGetters(["getData"]),
     },
 
     mounted() {
+        // Montage du data dans la page
         this.$store.dispatch("fetchData").then(() => {
             return this.getData;
         });
     },
 
     methods: {
+        // Ajout d'un produit dans le panier 
         addToCart(product) {
             this.$store.dispatch("addToCart", product);
         },
