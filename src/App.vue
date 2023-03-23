@@ -22,15 +22,18 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+  @import '@/assets/styles/variables.scss';
+
   *{
     box-sizing: border-box;
   }
+
   body {
     margin: 0;
     padding: 0;
     color: rgba(0, 0, 0, .6);
-    background-color: #d3d3d3;
+    background-color: $bg-primary;
   }
 
 </style>

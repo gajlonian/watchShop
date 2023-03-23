@@ -1,12 +1,12 @@
 <template>
-    <div class="cart">
+    <div class="shoppingCart">
         <a href="#" @click.prevent="showShoppingCart">
             <i href="#" class="fa fa-shopping-cart" style="font-size: 25px; color: rgba(0, 0, 0, 0.5)" onmouseover="this.style.color='#000000'" onmouseout="this.style.color='rgba(0,0,0, .5)'"></i>
         </a>
 
         <div class="content mt-1" :class="{ active: isActive }">
-            <div class="cartSms" v-if="this.$store.state.cart == 0">Empty</div>
-            <ul class="list-group pt-2" v-for="product in cart" :key="product.id">
+            <div class="content__empty" v-if="this.$store.state.cart == 0">Empty</div>
+            <ul class="list-group pt-2 content__list" v-for="product in cart" :key="product.id">
                 <li class="list-group-item py-0 d-flex justify-content-between">
                     <span class="d-block"><img :src="product.thumbnail" alt="" /></span>
                     <div class="my-auto">
@@ -17,22 +17,22 @@
                         </span>
                     </div>
                 </li>
-                <div>
+                <div class="article">
                     <p class="px-3 lh-base article__quantity">
                         Quantity : <span>{{ product.quantity }}</span
                         ><br />
-                        <span class="bg-dark qbtn" @click="removeQuantity(product)">
+                        <span class="bg-dark article__btnAction" @click="removeQuantity(product)">
                             <i class="fas fa-minus text-white"></i>
                         </span> <span> </span>
-                        <span class="bg-dark qbtn" @click="addQuantity(product)">
+                        <span class="bg-dark article__btnAction" @click="addQuantity(product)">
                             <i class="fas fa-plus text-white"></i>
                         </span>
                     </p>
                 </div>
                 <hr class="my-0 py-0" />
             </ul>
-            <footer class="px-3 pt-2">
-                <p class="mb-0 article__total">Total article : {{ getTotalQuantity }}</p>
+            <footer class="px-3 pt-2 article__footer">
+                <p class="mb-0">Total article : {{ getTotalQuantity }}</p>
                 <div class="total__price d-flex justify-content-between">
                     <h5>Total</h5>
                     <h5>{{ getTotalPrice }}$</h5>
@@ -95,12 +95,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/styles/variables.scss';
 .content {
     color: rgb(0, 0, 0, 0.8);
     width: 200px;
     height: 0;
-    background-color: rgb(55, 136, 138, 0.9);
+    background-color: rgba($bg-secondary, .9);
     position: absolute;
     right: 13px;
     border-radius: 5px;
@@ -108,54 +109,60 @@ export default {
     overflow: hidden;
     transition: height 500ms ease;
     padding: 0;
+    font-size: 0.8rem;
+
+    //Message: "Empty" si le panier est vide
+    &__empty {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        font-size: 1.5rem;
+    }
+
+    //Listes des produits dans le panier (prix, img, ...)
+    &__list {
+        //thumbnail de l'article
+        img {
+            width: 55px;
+            height: 55px;
+            border-radius: $border-round;
+        }
+
+        li {
+            background-color: inherit;
+            border: none;
+        }
+    }
+
 }
 
+// Si le panier est active (ouvert)
 .active {
     height: 300px;
     overflow: auto;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer et Edge */
     overflow: -moz-scrollbars-none; /* Firefox */
+
+    &::-webkit-scrollbar {
+        width: 0px;
+        background-color: $bg-scrollbar;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background-color: $bg-scrollbar;
+    }
 }
 
-.active::-webkit-scrollbar {
-    width: 0px;
-    background-color: transparent;
-}
+.article {
 
-.active::-webkit-scrollbar-corner {
-    background-color: transparent;
-}
-
-img {
-    width: 55px;
-    height: 55px;
-    border-radius: 50px;
-}
-
-.list-group-item {
-    background-color: inherit;
-    border: none;
-}
-
-.cartSms {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-    font-size: 1.5rem;
-}
-
-.article__total,
-.article__quantity {
-    font-size: 0.8rem;
-}
-
-.qbtn {
-    padding: 6px;
-    border-radius: 50%;
-    font-size: 0.6rem;
+    &__btnAction {
+        padding: 5px;
+        border-radius: $border-round;
+        font-size: 0.6rem;
+    }
 }
 </style>

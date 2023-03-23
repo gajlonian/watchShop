@@ -36,13 +36,13 @@ export default {
 };
 </script>
 
-<style scoped>
-a {
+<style lang="scss" scoped>
+/*a {
     text-decoration: none;
     outline: none;
-}
+}*/
 .navbar-brand {
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 0.6);
     font-weight: 500;
 }
 

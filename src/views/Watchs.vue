@@ -43,15 +43,17 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/styles/variables.scss';
 .card {
-    background-color: #d3d3d3;
+    background-color: $bg-primary;
     width: 100%;
     border: none;
     transition: transform 250ms ease, background-color 100ms ease-in-out;
-}
-.card:hover {
-    transform: scale(1.1);
-    background-color: rgb(55, 136, 138, 0.1);
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: rgb($bg-secondary, 0.1);
+    }
 }
 </style>
