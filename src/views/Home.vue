@@ -38,14 +38,14 @@ export default {
     }
 
     &__btn {
-        background-color: /*#068488*/ $bg-secondary;
+        background-color: $btn-primary;
         color: $bg-primary;
         padding: 15px 25px;
         margin-top: 20px;
         font-size: 1.3rem;
 
         &:hover {
-            background-color: #008B69;
+            background-color: darken($btn-primary, 5);
         }
     }
 
