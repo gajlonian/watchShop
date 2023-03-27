@@ -7,16 +7,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item mx-4">
+                    <li class="nav-item mx-md-4">
                         <router-link class="nav-link" aria-current="page" to="/">HOME</router-link>
                     </li>
-                    <li class="nav-item mx-4">
+                    <li class="nav-item mx-md-4">
                         <router-link class="nav-link" to="/watchs">WATCHS</router-link>
                     </li>
-                    <li class="nav-item mx-4">
+                    <li class="nav-item mx-md-4">
                         <router-link class="nav-link" to="/accessories">ACCESSORIES</router-link>
                     </li>
-                    <li class="nav-item mx-4">
+                    <li class="nav-item mx-md-4">
                         <router-link class="nav-link" to="/gift_finder">GIFT FINDER</router-link>
                     </li>
                 </ul>

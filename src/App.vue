@@ -32,7 +32,7 @@ export default {
   body {
     margin: 0;
     padding: 0;
-    color: rgba(0, 0, 0, .6);
+    color: rgba($color-primary, .6);
     background-color: $bg-primary;
   }
 

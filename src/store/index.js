@@ -1,5 +1,4 @@
 import Vuex from "vuex";
-
 // Recuperer les données dans le fichier products.json
 async function getProducts() {
     const res = await fetch("products.json");

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-4" v-for="product in this.getData" :key="product.id">
+            <div class="col-md-4" v-for="product in this.getData" :key="product.id">
                 <div class="card">
                     <div class="card-body">
                         <img :src="product.url" alt="smartwatch" class="card-img" />
@@ -11,7 +11,7 @@
                         <p class="card-text">
                             Prices: <span>{{ product.price }} $</span>
                         </p>
-                        <button class="btn btn-outline-success" @click.prevent="addToCart(product)">ADD TO CART</button>
+                        <button class="btn btn-outline-success btn-md" @click.prevent="addToCart(product)">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@ export default {
     },
 
     methods: {
-        // Ajout d'un produit dans le panier 
+        // Ajout d'un produit dans le panier
         addToCart(product) {
             this.$store.dispatch("addToCart", product);
         },
@@ -44,16 +44,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/variables.scss';
+@import "@/assets/styles/variables.scss";
+@import "@/assets/styles/responsives.scss";
 .card {
     background-color: $bg-primary;
     width: 100%;
     border: none;
     transition: transform 250ms ease, background-color 100ms ease-in-out;
 
-    &:hover {
-        transform: scale(1.1);
-        background-color: rgb($bg-secondary, 0.1);
+    @media #{$small-up} {
+        .btn {
+            font-size: 12px;
+            padding: 4px 8px;
+        }
+    }
+
+    @media #{$medium-up} {
+        &:hover {
+            transform: scale(1.1);
+            background-color: rgb($bg-secondary, 0.1);
+        }
+        .btn {
+            font-size: 14px;
+            padding: 6px 12px;
+        }
     }
 }
 </style>

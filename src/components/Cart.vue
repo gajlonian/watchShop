@@ -50,7 +50,7 @@ export default {
     data() {
         return {
             isActive: false,
-        };
+        }; 
     },
 
     methods: {
@@ -97,8 +97,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/styles/variables.scss';
+@import '@/assets/styles/responsives.scss';
 .content {
-    color: rgb(0, 0, 0, 0.8);
+    color: rgb($color-primary, .7);
     width: 200px;
     height: 0;
     background-color: rgba($bg-secondary, .9);
@@ -110,7 +111,12 @@ export default {
     transition: height 500ms ease;
     padding: 0;
     font-size: 0.8rem;
-
+    
+    @media #{$small-up} {
+        width: 150px;
+        left: 13px;
+    }
+    
     //Message: "Empty" si le panier est vide
     &__empty {
         width: 100%;
@@ -136,7 +142,7 @@ export default {
             border: none;
         }
     }
-
+    
 }
 
 // Si le panier est active (ouvert)
@@ -146,7 +152,7 @@ export default {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer et Edge */
     overflow: -moz-scrollbars-none; /* Firefox */
-
+    
     &::-webkit-scrollbar {
         width: 0px;
         background-color: $bg-scrollbar;
@@ -155,6 +161,13 @@ export default {
     &::-webkit-scrollbar-corner {
         background-color: $bg-scrollbar;
     }
+
+    @media #{$small-up} {
+        & {
+            height: 150px;
+        }
+    }
+
 }
 
 .article {

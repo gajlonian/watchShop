@@ -26,13 +26,15 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/styles/variables.scss';
+@import "@/assets/styles/responsives.scss";
+
 
 .body {
     font-size: 1.1rem;
 
     h1 {
-        font-size: 4rem;
-        padding-bottom: 20px;
+        font-size: 3.5rem;
+        /*padding-bottom: 10px;*/
         width: 300px;
         border-radius: 10px;
     }
@@ -50,8 +52,34 @@ export default {
     }
 
     &__img {
-        width: 500px;
+        width: 400px;
     }
 }
 
+    @media #{$small-up} {
+        .body {
+            h1 {
+                font-size: 3rem;
+                padding-bottom: 5px;
+                margin: 0;
+            }
+
+            &__btn {
+                font-size: 1rem;
+                padding: 10px 20px;
+                margin-top: 0;
+            }
+
+            &__img {
+                width: 150px;
+                padding-right: 16px;
+            }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+    }
 </style>
